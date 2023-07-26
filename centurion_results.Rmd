@@ -1,0 +1,35 @@
+---
+title: "Centurion Results"
+author: "Riz Dusoye"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.width=10)
+source('results_analysis.R')
+```
+
+## North Downs Way 100 
+
+I've downloaded the NDW100 results since 2016 (the first year the final checkpoint is marked as Ashford) and looked at the average, min and max times each finisher went through each checkpoint. Runners who DNF'd are excluded
+
+Below show these stats, along with a boxplot of each checkpoint for finishers between 19-20, 23-24 and 29-30 hours
+
+### 19:00-20:00
+```{r, echo=FALSE, warning=FALSE}
+summary.table(19,20)
+summary.plot(19,20)
+```
+
+### 23:00-24:00
+```{r, echo=FALSE, warning=FALSE}
+summary.table(23,24)
+summary.plot(23,24)
+```
+
+### 29:00-30:00
+```{r, echo=FALSE, warning=FALSE}
+summary.table(29,30)
+summary.plot(29,30)
+```
