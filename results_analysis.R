@@ -62,33 +62,36 @@ speed_data %>%
 
 time_range = c(29,30)
 
-summary.table <- function(mintime, maxtime){
-  speed_data %>%
+filter.runners <- function(mintime, maxtime){
+  runner_filter <- speed_data %>%
     filter(checkpoint == 'Ashford') %>%
     filter(time_mins >= (mintime*60) & time_mins < (maxtime*60)) %>%
-    select(runner) -> runner_filter
+    select(runner) 
+  
+  return(runner_filter)
+}
+
+summary.table <- function(mintime, maxtime){
+  runner_filter <- filter.runners(mintime, maxtime)
   
   speed_data %>%
     merge(., runner_filter, by = 'runner') %>%
-    group_by(checkpoint) %>%
+    group_by(checkpoint, miles, km) %>%
     summarise(mean = round(mean(time_mins, na.rm = TRUE),1),
               min = min(time_mins, na.rm = TRUE),
               max = max(time_mins, na.rm = TRUE),
               quantile = quantile(time_mins, p =0.75, na.rm = TRUE),
-              mean_hms = seconds_to_period(seconds(mean*60)),
+              average_hms = seconds_to_period(seconds(mean*60)),
               min_hms = seconds_to_period(seconds(min*60)),
               max_hms = seconds_to_period(seconds(max*60))) %>%
     select(-c(mean, min, max, quantile)) %>%
-    arrange(mean_hms) -> table.out
+    arrange(average_hms) -> table.out
   
   return(table.out)
 }
 
 summary.plot <- function(mintime, maxtime){
-  speed_data %>%
-    filter(checkpoint == 'Ashford') %>%
-    filter(time_mins >= (mintime*60) & time_mins < (maxtime*60)) %>%
-    select(runner) -> runner_filter
+  runner_filter <- filter.runners(mintime, maxtime)
   
   speed_data %>%
     merge(., runner_filter, by = 'runner') %>% 
