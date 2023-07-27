@@ -10,9 +10,6 @@ finishers between 19-20, 23-24 and 29-30 hours
 
 ### 19:00-20:00
 
-    ## `summarise()` has grouped output by 'checkpoint', 'miles'. You can override
-    ## using the `.groups` argument.
-
     ## # A tibble: 11 × 6
     ## # Groups:   checkpoint, miles [11]
     ##    checkpoint        miles    km average_hms min_hms     max_hms                
@@ -33,9 +30,6 @@ finishers between 19-20, 23-24 and 29-30 hours
 
 ### 23:00-24:00
 
-    ## `summarise()` has grouped output by 'checkpoint', 'miles'. You can override
-    ## using the `.groups` argument.
-
     ## # A tibble: 11 × 6
     ## # Groups:   checkpoint, miles [11]
     ##    checkpoint        miles    km average_hms min_hms     max_hms    
@@ -55,9 +49,6 @@ finishers between 19-20, 23-24 and 29-30 hours
 ![](centurion_results_files/figure-markdown_strict/unnamed-chunk-2-1.png)
 
 ### 29:00-30:00
-
-    ## `summarise()` has grouped output by 'checkpoint', 'miles'. You can override
-    ## using the `.groups` argument.
 
     ## # A tibble: 11 × 6
     ## # Groups:   checkpoint, miles [11]
